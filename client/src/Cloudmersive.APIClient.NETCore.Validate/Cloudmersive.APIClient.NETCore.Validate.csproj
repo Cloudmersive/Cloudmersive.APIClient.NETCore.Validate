@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Cloudmersive.APIClient.NETCore.Validate</AssemblyName>
     <PackageId>Cloudmersive.APIClient.NETCore.Validate</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>Swagger</Authors>
-    <Company>Swagger</Company>
-    <AssemblyTitle>Swagger Library</AssemblyTitle>
-    <Description>A library generated from a Swagger doc</Description>
+    <Authors>Cloudmersive</Authors>
+    <Company>Cloudmersive</Company>
+    <AssemblyTitle>Cloudmersive Validate API Client</AssemblyTitle>
+    <Description>The validation APIs help you validate data. Check if an E-mail address is real. Check if a domain is real. Check up on an IP address, and even where it is located. All this and much more is available in the validation API.</Description>
     <Copyright>No Copyright</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>Cloudmersive.APIClient.NETCore.Validate</RootNamespace>
-    <Version>1.1.8</Version>
+    <Version>1.2.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
