@@ -40,7 +40,9 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <param name="ValidSMTP">True if the email address was verified by the remote server, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
         /// <param name="IsCatchallDomain">True if the domain is a catch-all domain name, false otherwise.  Catch-all domain names, while rare, always accept inbound email to ensure they do not lose any potentially useful emails.  Catch-all domain names can occassionally be configured to first accept and store all inbound email, but then later send a bounce email back to the sender after a delayed period of time..</param>
         /// <param name="Domain">Domain name of the email address.</param>
-        public FullEmailValidationResponse(bool? ValidAddress = default(bool?), string MailServerUsedForValidation = default(string), bool? ValidSyntax = default(bool?), bool? ValidDomain = default(bool?), bool? ValidSMTP = default(bool?), bool? IsCatchallDomain = default(bool?), string Domain = default(string))
+        /// <param name="IsFreeEmailProvider">True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise..</param>
+        /// <param name="IsDisposable">True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there..</param>
+        public FullEmailValidationResponse(bool? ValidAddress = default(bool?), string MailServerUsedForValidation = default(string), bool? ValidSyntax = default(bool?), bool? ValidDomain = default(bool?), bool? ValidSMTP = default(bool?), bool? IsCatchallDomain = default(bool?), string Domain = default(string), bool? IsFreeEmailProvider = default(bool?), bool? IsDisposable = default(bool?))
         {
             this.ValidAddress = ValidAddress;
             this.MailServerUsedForValidation = MailServerUsedForValidation;
@@ -49,6 +51,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             this.ValidSMTP = ValidSMTP;
             this.IsCatchallDomain = IsCatchallDomain;
             this.Domain = Domain;
+            this.IsFreeEmailProvider = IsFreeEmailProvider;
+            this.IsDisposable = IsDisposable;
         }
         
         /// <summary>
@@ -101,6 +105,20 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public string Domain { get; set; }
 
         /// <summary>
+        /// True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise.
+        /// </summary>
+        /// <value>True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise.</value>
+        [DataMember(Name="IsFreeEmailProvider", EmitDefaultValue=false)]
+        public bool? IsFreeEmailProvider { get; set; }
+
+        /// <summary>
+        /// True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there.
+        /// </summary>
+        /// <value>True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there.</value>
+        [DataMember(Name="IsDisposable", EmitDefaultValue=false)]
+        public bool? IsDisposable { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -115,6 +133,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             sb.Append("  ValidSMTP: ").Append(ValidSMTP).Append("\n");
             sb.Append("  IsCatchallDomain: ").Append(IsCatchallDomain).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
+            sb.Append("  IsFreeEmailProvider: ").Append(IsFreeEmailProvider).Append("\n");
+            sb.Append("  IsDisposable: ").Append(IsDisposable).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -183,6 +203,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     this.Domain == input.Domain ||
                     (this.Domain != null &&
                     this.Domain.Equals(input.Domain))
+                ) && 
+                (
+                    this.IsFreeEmailProvider == input.IsFreeEmailProvider ||
+                    (this.IsFreeEmailProvider != null &&
+                    this.IsFreeEmailProvider.Equals(input.IsFreeEmailProvider))
+                ) && 
+                (
+                    this.IsDisposable == input.IsDisposable ||
+                    (this.IsDisposable != null &&
+                    this.IsDisposable.Equals(input.IsDisposable))
                 );
         }
 
@@ -209,6 +239,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.IsCatchallDomain.GetHashCode();
                 if (this.Domain != null)
                     hashCode = hashCode * 59 + this.Domain.GetHashCode();
+                if (this.IsFreeEmailProvider != null)
+                    hashCode = hashCode * 59 + this.IsFreeEmailProvider.GetHashCode();
+                if (this.IsDisposable != null)
+                    hashCode = hashCode * 59 + this.IsDisposable.GetHashCode();
                 return hashCode;
             }
         }
