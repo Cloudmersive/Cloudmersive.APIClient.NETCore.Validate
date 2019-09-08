@@ -25,28 +25,55 @@ using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.Swag
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
 {
     /// <summary>
-    /// Result of validating a URL with syntax only
+    /// Result of validating a URL with full validation
     /// </summary>
     [DataContract]
-    public partial class ValidateUrlResponseSyntaxOnly :  IEquatable<ValidateUrlResponseSyntaxOnly>, IValidatableObject
+    public partial class ValidateUrlResponseFull :  IEquatable<ValidateUrlResponseFull>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidateUrlResponseSyntaxOnly" /> class.
+        /// Initializes a new instance of the <see cref="ValidateUrlResponseFull" /> class.
         /// </summary>
-        /// <param name="ValidURL">True if the URL is valid, false otherwise.</param>
+        /// <param name="ValidURL">True if the URL has valid syntax, a valid domain, a valid endpoint, and passes virus scan checks; false otherwise.</param>
+        /// <param name="ValidSyntax">True if the URL has valid syntax, false otherwise.</param>
+        /// <param name="ValidDomain">True if the domain name is valid and exists, false otherwise.</param>
+        /// <param name="ValidEndpoint">True if the endpoint is up and responsive and passes a virus scan check, false otherwise.</param>
         /// <param name="WellFormedURL">Well-formed version of the URL.</param>
-        public ValidateUrlResponseSyntaxOnly(bool? ValidURL = default(bool?), string WellFormedURL = default(string))
+        public ValidateUrlResponseFull(bool? ValidURL = default(bool?), bool? ValidSyntax = default(bool?), bool? ValidDomain = default(bool?), bool? ValidEndpoint = default(bool?), string WellFormedURL = default(string))
         {
             this.ValidURL = ValidURL;
+            this.ValidSyntax = ValidSyntax;
+            this.ValidDomain = ValidDomain;
+            this.ValidEndpoint = ValidEndpoint;
             this.WellFormedURL = WellFormedURL;
         }
         
         /// <summary>
-        /// True if the URL is valid, false otherwise
+        /// True if the URL has valid syntax, a valid domain, a valid endpoint, and passes virus scan checks; false otherwise
         /// </summary>
-        /// <value>True if the URL is valid, false otherwise</value>
+        /// <value>True if the URL has valid syntax, a valid domain, a valid endpoint, and passes virus scan checks; false otherwise</value>
         [DataMember(Name="ValidURL", EmitDefaultValue=false)]
         public bool? ValidURL { get; set; }
+
+        /// <summary>
+        /// True if the URL has valid syntax, false otherwise
+        /// </summary>
+        /// <value>True if the URL has valid syntax, false otherwise</value>
+        [DataMember(Name="Valid_Syntax", EmitDefaultValue=false)]
+        public bool? ValidSyntax { get; set; }
+
+        /// <summary>
+        /// True if the domain name is valid and exists, false otherwise
+        /// </summary>
+        /// <value>True if the domain name is valid and exists, false otherwise</value>
+        [DataMember(Name="Valid_Domain", EmitDefaultValue=false)]
+        public bool? ValidDomain { get; set; }
+
+        /// <summary>
+        /// True if the endpoint is up and responsive and passes a virus scan check, false otherwise
+        /// </summary>
+        /// <value>True if the endpoint is up and responsive and passes a virus scan check, false otherwise</value>
+        [DataMember(Name="Valid_Endpoint", EmitDefaultValue=false)]
+        public bool? ValidEndpoint { get; set; }
 
         /// <summary>
         /// Well-formed version of the URL
@@ -62,8 +89,11 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ValidateUrlResponseSyntaxOnly {\n");
+            sb.Append("class ValidateUrlResponseFull {\n");
             sb.Append("  ValidURL: ").Append(ValidURL).Append("\n");
+            sb.Append("  ValidSyntax: ").Append(ValidSyntax).Append("\n");
+            sb.Append("  ValidDomain: ").Append(ValidDomain).Append("\n");
+            sb.Append("  ValidEndpoint: ").Append(ValidEndpoint).Append("\n");
             sb.Append("  WellFormedURL: ").Append(WellFormedURL).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,15 +115,15 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidateUrlResponseSyntaxOnly);
+            return this.Equals(input as ValidateUrlResponseFull);
         }
 
         /// <summary>
-        /// Returns true if ValidateUrlResponseSyntaxOnly instances are equal
+        /// Returns true if ValidateUrlResponseFull instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidateUrlResponseSyntaxOnly to be compared</param>
+        /// <param name="input">Instance of ValidateUrlResponseFull to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidateUrlResponseSyntaxOnly input)
+        public bool Equals(ValidateUrlResponseFull input)
         {
             if (input == null)
                 return false;
@@ -103,6 +133,21 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     this.ValidURL == input.ValidURL ||
                     (this.ValidURL != null &&
                     this.ValidURL.Equals(input.ValidURL))
+                ) && 
+                (
+                    this.ValidSyntax == input.ValidSyntax ||
+                    (this.ValidSyntax != null &&
+                    this.ValidSyntax.Equals(input.ValidSyntax))
+                ) && 
+                (
+                    this.ValidDomain == input.ValidDomain ||
+                    (this.ValidDomain != null &&
+                    this.ValidDomain.Equals(input.ValidDomain))
+                ) && 
+                (
+                    this.ValidEndpoint == input.ValidEndpoint ||
+                    (this.ValidEndpoint != null &&
+                    this.ValidEndpoint.Equals(input.ValidEndpoint))
                 ) && 
                 (
                     this.WellFormedURL == input.WellFormedURL ||
@@ -122,6 +167,12 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                 int hashCode = 41;
                 if (this.ValidURL != null)
                     hashCode = hashCode * 59 + this.ValidURL.GetHashCode();
+                if (this.ValidSyntax != null)
+                    hashCode = hashCode * 59 + this.ValidSyntax.GetHashCode();
+                if (this.ValidDomain != null)
+                    hashCode = hashCode * 59 + this.ValidDomain.GetHashCode();
+                if (this.ValidEndpoint != null)
+                    hashCode = hashCode * 59 + this.ValidEndpoint.GetHashCode();
                 if (this.WellFormedURL != null)
                     hashCode = hashCode * 59 + this.WellFormedURL.GetHashCode();
                 return hashCode;

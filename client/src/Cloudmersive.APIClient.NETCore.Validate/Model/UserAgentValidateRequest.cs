@@ -25,35 +25,26 @@ using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.Swag
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
 {
     /// <summary>
-    /// Result of validating a URL with syntax only
+    /// User-Agent parse and validation request
     /// </summary>
     [DataContract]
-    public partial class ValidateUrlResponseSyntaxOnly :  IEquatable<ValidateUrlResponseSyntaxOnly>, IValidatableObject
+    public partial class UserAgentValidateRequest :  IEquatable<UserAgentValidateRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidateUrlResponseSyntaxOnly" /> class.
+        /// Initializes a new instance of the <see cref="UserAgentValidateRequest" /> class.
         /// </summary>
-        /// <param name="ValidURL">True if the URL is valid, false otherwise.</param>
-        /// <param name="WellFormedURL">Well-formed version of the URL.</param>
-        public ValidateUrlResponseSyntaxOnly(bool? ValidURL = default(bool?), string WellFormedURL = default(string))
+        /// <param name="UserAgentString">The user agent string you wish to parse and validate.</param>
+        public UserAgentValidateRequest(string UserAgentString = default(string))
         {
-            this.ValidURL = ValidURL;
-            this.WellFormedURL = WellFormedURL;
+            this.UserAgentString = UserAgentString;
         }
         
         /// <summary>
-        /// True if the URL is valid, false otherwise
+        /// The user agent string you wish to parse and validate
         /// </summary>
-        /// <value>True if the URL is valid, false otherwise</value>
-        [DataMember(Name="ValidURL", EmitDefaultValue=false)]
-        public bool? ValidURL { get; set; }
-
-        /// <summary>
-        /// Well-formed version of the URL
-        /// </summary>
-        /// <value>Well-formed version of the URL</value>
-        [DataMember(Name="WellFormedURL", EmitDefaultValue=false)]
-        public string WellFormedURL { get; set; }
+        /// <value>The user agent string you wish to parse and validate</value>
+        [DataMember(Name="UserAgentString", EmitDefaultValue=false)]
+        public string UserAgentString { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +53,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ValidateUrlResponseSyntaxOnly {\n");
-            sb.Append("  ValidURL: ").Append(ValidURL).Append("\n");
-            sb.Append("  WellFormedURL: ").Append(WellFormedURL).Append("\n");
+            sb.Append("class UserAgentValidateRequest {\n");
+            sb.Append("  UserAgentString: ").Append(UserAgentString).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,29 +75,24 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidateUrlResponseSyntaxOnly);
+            return this.Equals(input as UserAgentValidateRequest);
         }
 
         /// <summary>
-        /// Returns true if ValidateUrlResponseSyntaxOnly instances are equal
+        /// Returns true if UserAgentValidateRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidateUrlResponseSyntaxOnly to be compared</param>
+        /// <param name="input">Instance of UserAgentValidateRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidateUrlResponseSyntaxOnly input)
+        public bool Equals(UserAgentValidateRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.ValidURL == input.ValidURL ||
-                    (this.ValidURL != null &&
-                    this.ValidURL.Equals(input.ValidURL))
-                ) && 
-                (
-                    this.WellFormedURL == input.WellFormedURL ||
-                    (this.WellFormedURL != null &&
-                    this.WellFormedURL.Equals(input.WellFormedURL))
+                    this.UserAgentString == input.UserAgentString ||
+                    (this.UserAgentString != null &&
+                    this.UserAgentString.Equals(input.UserAgentString))
                 );
         }
 
@@ -120,10 +105,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ValidURL != null)
-                    hashCode = hashCode * 59 + this.ValidURL.GetHashCode();
-                if (this.WellFormedURL != null)
-                    hashCode = hashCode * 59 + this.WellFormedURL.GetHashCode();
+                if (this.UserAgentString != null)
+                    hashCode = hashCode * 59 + this.UserAgentString.GetHashCode();
                 return hashCode;
             }
         }
