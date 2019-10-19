@@ -33,11 +33,11 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VatLookupResponse" /> class.
         /// </summary>
-        /// <param name="CountryCode">CountryCode.</param>
-        /// <param name="VatNumber">VatNumber.</param>
-        /// <param name="IsValid">IsValid.</param>
-        /// <param name="BusinessName">BusinessName.</param>
-        /// <param name="BusinessAddress">BusinessAddress.</param>
+        /// <param name="CountryCode">Two-letter country code.</param>
+        /// <param name="VatNumber">VAT number.</param>
+        /// <param name="IsValid">True if the VAT code is valid, false otherwise.</param>
+        /// <param name="BusinessName">Name of the business.</param>
+        /// <param name="BusinessAddress">Business address.</param>
         public VatLookupResponse(string CountryCode = default(string), string VatNumber = default(string), bool? IsValid = default(bool?), string BusinessName = default(string), string BusinessAddress = default(string))
         {
             this.CountryCode = CountryCode;
@@ -48,32 +48,37 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         }
         
         /// <summary>
-        /// Gets or Sets CountryCode
+        /// Two-letter country code
         /// </summary>
+        /// <value>Two-letter country code</value>
         [DataMember(Name="CountryCode", EmitDefaultValue=false)]
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets VatNumber
+        /// VAT number
         /// </summary>
+        /// <value>VAT number</value>
         [DataMember(Name="VatNumber", EmitDefaultValue=false)]
         public string VatNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsValid
+        /// True if the VAT code is valid, false otherwise
         /// </summary>
+        /// <value>True if the VAT code is valid, false otherwise</value>
         [DataMember(Name="IsValid", EmitDefaultValue=false)]
         public bool? IsValid { get; set; }
 
         /// <summary>
-        /// Gets or Sets BusinessName
+        /// Name of the business
         /// </summary>
+        /// <value>Name of the business</value>
         [DataMember(Name="BusinessName", EmitDefaultValue=false)]
         public string BusinessName { get; set; }
 
         /// <summary>
-        /// Gets or Sets BusinessAddress
+        /// Business address
         /// </summary>
+        /// <value>Business address</value>
         [DataMember(Name="BusinessAddress", EmitDefaultValue=false)]
         public string BusinessAddress { get; set; }
 

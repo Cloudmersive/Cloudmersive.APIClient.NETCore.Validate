@@ -33,15 +33,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateUrlRequestFull" /> class.
         /// </summary>
-        /// <param name="URL">URL.</param>
+        /// <param name="URL">URL to validate.</param>
         public ValidateUrlRequestFull(string URL = default(string))
         {
             this.URL = URL;
         }
         
         /// <summary>
-        /// Gets or Sets URL
+        /// URL to validate
         /// </summary>
+        /// <value>URL to validate</value>
         [DataMember(Name="URL", EmitDefaultValue=false)]
         public string URL { get; set; }
 

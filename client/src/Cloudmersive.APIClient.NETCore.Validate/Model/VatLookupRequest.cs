@@ -33,15 +33,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VatLookupRequest" /> class.
         /// </summary>
-        /// <param name="VatCode">VatCode.</param>
+        /// <param name="VatCode">VAT code to lookup; example \&quot;CZ25123891\&quot;.</param>
         public VatLookupRequest(string VatCode = default(string))
         {
             this.VatCode = VatCode;
         }
         
         /// <summary>
-        /// Gets or Sets VatCode
+        /// VAT code to lookup; example \&quot;CZ25123891\&quot;
         /// </summary>
+        /// <value>VAT code to lookup; example \&quot;CZ25123891\&quot;</value>
         [DataMember(Name="VatCode", EmitDefaultValue=false)]
         public string VatCode { get; set; }
 

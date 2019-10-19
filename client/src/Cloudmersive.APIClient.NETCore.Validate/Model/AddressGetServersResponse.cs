@@ -33,8 +33,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressGetServersResponse" /> class.
         /// </summary>
-        /// <param name="Success">Success.</param>
-        /// <param name="Servers">Servers.</param>
+        /// <param name="Success">True if partial address validation was successufl, false otherwise.</param>
+        /// <param name="Servers">Email servers for this email address.</param>
         public AddressGetServersResponse(bool? Success = default(bool?), List<string> Servers = default(List<string>))
         {
             this.Success = Success;
@@ -42,14 +42,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         }
         
         /// <summary>
-        /// Gets or Sets Success
+        /// True if partial address validation was successufl, false otherwise
         /// </summary>
+        /// <value>True if partial address validation was successufl, false otherwise</value>
         [DataMember(Name="Success", EmitDefaultValue=false)]
         public bool? Success { get; set; }
 
         /// <summary>
-        /// Gets or Sets Servers
+        /// Email servers for this email address
         /// </summary>
+        /// <value>Email servers for this email address</value>
         [DataMember(Name="Servers", EmitDefaultValue=false)]
         public List<string> Servers { get; set; }
 
