@@ -21,68 +21,68 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IIPAddressApi : IApiAccessor
+    public interface ILeadEnrichmentApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Geolocate an IP address
+        /// Enrich an input lead with additional fields of data
         /// </summary>
         /// <remarks>
-        /// Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// 
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>GeolocateResponse</returns>
-        GeolocateResponse IPAddressPost (string value);
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>LeadEnrichmentResponse</returns>
+        LeadEnrichmentResponse LeadEnrichmentEnrichLead (LeadEnrichmentRequest request);
 
         /// <summary>
-        /// Geolocate an IP address
+        /// Enrich an input lead with additional fields of data
         /// </summary>
         /// <remarks>
-        /// Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// 
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>ApiResponse of GeolocateResponse</returns>
-        ApiResponse<GeolocateResponse> IPAddressPostWithHttpInfo (string value);
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>ApiResponse of LeadEnrichmentResponse</returns>
+        ApiResponse<LeadEnrichmentResponse> LeadEnrichmentEnrichLeadWithHttpInfo (LeadEnrichmentRequest request);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Geolocate an IP address
+        /// Enrich an input lead with additional fields of data
         /// </summary>
         /// <remarks>
-        /// Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// 
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>Task of GeolocateResponse</returns>
-        System.Threading.Tasks.Task<GeolocateResponse> IPAddressPostAsync (string value);
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>Task of LeadEnrichmentResponse</returns>
+        System.Threading.Tasks.Task<LeadEnrichmentResponse> LeadEnrichmentEnrichLeadAsync (LeadEnrichmentRequest request);
 
         /// <summary>
-        /// Geolocate an IP address
+        /// Enrich an input lead with additional fields of data
         /// </summary>
         /// <remarks>
-        /// Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// 
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>Task of ApiResponse (GeolocateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GeolocateResponse>> IPAddressPostAsyncWithHttpInfo (string value);
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>Task of ApiResponse (LeadEnrichmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<LeadEnrichmentResponse>> LeadEnrichmentEnrichLeadAsyncWithHttpInfo (LeadEnrichmentRequest request);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class IPAddressApi : IIPAddressApi
+    public partial class LeadEnrichmentApi : ILeadEnrichmentApi
     {
         private Cloudmersive.APIClient.NETCore.Validate.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPAddressApi"/> class.
+        /// Initializes a new instance of the <see cref="LeadEnrichmentApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IPAddressApi(String basePath)
+        public LeadEnrichmentApi(String basePath)
         {
             this.Configuration = new Configuration { BasePath = basePath };
 
@@ -90,12 +90,12 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPAddressApi"/> class
+        /// Initializes a new instance of the <see cref="LeadEnrichmentApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IPAddressApi(Configuration configuration = null)
+        public LeadEnrichmentApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
@@ -169,30 +169,30 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
         }
 
         /// <summary>
-        /// Geolocate an IP address Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// Enrich an input lead with additional fields of data 
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>GeolocateResponse</returns>
-        public GeolocateResponse IPAddressPost (string value)
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>LeadEnrichmentResponse</returns>
+        public LeadEnrichmentResponse LeadEnrichmentEnrichLead (LeadEnrichmentRequest request)
         {
-             ApiResponse<GeolocateResponse> localVarResponse = IPAddressPostWithHttpInfo(value);
+             ApiResponse<LeadEnrichmentResponse> localVarResponse = LeadEnrichmentEnrichLeadWithHttpInfo(request);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Geolocate an IP address Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// Enrich an input lead with additional fields of data 
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>ApiResponse of GeolocateResponse</returns>
-        public ApiResponse< GeolocateResponse > IPAddressPostWithHttpInfo (string value)
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>ApiResponse of LeadEnrichmentResponse</returns>
+        public ApiResponse< LeadEnrichmentResponse > LeadEnrichmentEnrichLeadWithHttpInfo (LeadEnrichmentRequest request)
         {
-            // verify the required parameter 'value' is set
-            if (value == null)
-                throw new ApiException(400, "Missing required parameter 'value' when calling IPAddressApi->IPAddressPost");
+            // verify the required parameter 'request' is set
+            if (request == null)
+                throw new ApiException(400, "Missing required parameter 'request' when calling LeadEnrichmentApi->LeadEnrichmentEnrichLead");
 
-            var localVarPath = "/validate/ip/geolocate";
+            var localVarPath = "/validate/lead-enrichment/lead/enrich";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -202,7 +202,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "text/javascript", 
                 "application/json", 
                 "text/json"
             };
@@ -219,13 +218,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (value != null && value.GetType() != typeof(byte[]))
+            if (request != null && request.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(value); // http body (model) parameter
+                localVarPostBody = Configuration.ApiClient.Serialize(request); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = value; // byte array
+                localVarPostBody = request; // byte array
             }
 
             // authentication (Apikey) required
@@ -243,41 +242,41 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IPAddressPost", localVarResponse);
+                Exception exception = ExceptionFactory("LeadEnrichmentEnrichLead", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GeolocateResponse>(localVarStatusCode,
+            return new ApiResponse<LeadEnrichmentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GeolocateResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GeolocateResponse)));
+                (LeadEnrichmentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeadEnrichmentResponse)));
         }
 
         /// <summary>
-        /// Geolocate an IP address Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// Enrich an input lead with additional fields of data 
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>Task of GeolocateResponse</returns>
-        public async System.Threading.Tasks.Task<GeolocateResponse> IPAddressPostAsync (string value)
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>Task of LeadEnrichmentResponse</returns>
+        public async System.Threading.Tasks.Task<LeadEnrichmentResponse> LeadEnrichmentEnrichLeadAsync (LeadEnrichmentRequest request)
         {
-             ApiResponse<GeolocateResponse> localVarResponse = await IPAddressPostAsyncWithHttpInfo(value);
+             ApiResponse<LeadEnrichmentResponse> localVarResponse = await LeadEnrichmentEnrichLeadAsyncWithHttpInfo(request);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Geolocate an IP address Identify an IP address Country, State/Provence, City, Zip/Postal Code, etc.  Useful for security and UX applications.
+        /// Enrich an input lead with additional fields of data 
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.Validate.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="value">IP address to geolocate, e.g. \&quot;55.55.55.55\&quot;.  The input is a string so be sure to enclose it in double-quotes.</param>
-        /// <returns>Task of ApiResponse (GeolocateResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GeolocateResponse>> IPAddressPostAsyncWithHttpInfo (string value)
+        /// <param name="request">Input lead with known fields set, and unknown fields left blank (null)</param>
+        /// <returns>Task of ApiResponse (LeadEnrichmentResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<LeadEnrichmentResponse>> LeadEnrichmentEnrichLeadAsyncWithHttpInfo (LeadEnrichmentRequest request)
         {
-            // verify the required parameter 'value' is set
-            if (value == null)
-                throw new ApiException(400, "Missing required parameter 'value' when calling IPAddressApi->IPAddressPost");
+            // verify the required parameter 'request' is set
+            if (request == null)
+                throw new ApiException(400, "Missing required parameter 'request' when calling LeadEnrichmentApi->LeadEnrichmentEnrichLead");
 
-            var localVarPath = "/validate/ip/geolocate";
+            var localVarPath = "/validate/lead-enrichment/lead/enrich";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -287,7 +286,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "text/javascript", 
                 "application/json", 
                 "text/json"
             };
@@ -304,13 +302,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (value != null && value.GetType() != typeof(byte[]))
+            if (request != null && request.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(value); // http body (model) parameter
+                localVarPostBody = Configuration.ApiClient.Serialize(request); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = value; // byte array
+                localVarPostBody = request; // byte array
             }
 
             // authentication (Apikey) required
@@ -328,13 +326,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IPAddressPost", localVarResponse);
+                Exception exception = ExceptionFactory("LeadEnrichmentEnrichLead", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GeolocateResponse>(localVarStatusCode,
+            return new ApiResponse<LeadEnrichmentResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GeolocateResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GeolocateResponse)));
+                (LeadEnrichmentResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeadEnrichmentResponse)));
         }
 
     }
