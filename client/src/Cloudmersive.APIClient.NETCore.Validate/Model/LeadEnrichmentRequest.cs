@@ -34,6 +34,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Initializes a new instance of the <see cref="LeadEnrichmentRequest" /> class.
         /// </summary>
         /// <param name="ContactBusinessEmail">The person&#39;s business email address for the lead.</param>
+        /// <param name="ContactFirstName">The person&#39;s first name for the lead.</param>
+        /// <param name="ContactLastName">The person&#39;s last name for the lead.</param>
         /// <param name="CompanyName">Name of the company for the lead.</param>
         /// <param name="CompanyDomainName">Domain name / website for the lead.</param>
         /// <param name="CompanyHouseNumber">House number of the address of the company for the lead.</param>
@@ -42,10 +44,14 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <param name="CompanyStateOrProvince">State or Province of the address of the company for the lead.</param>
         /// <param name="CompanyPostalCode">Postal Code of the address of the company for the lead.</param>
         /// <param name="CompanyCountry">Country of the address of the company for the lead.</param>
+        /// <param name="CompanyCountryCode">Country Code (2-letter ISO 3166-1) of the address of the company for the lead.</param>
+        /// <param name="CompanyTelephone">Telephone of the company office for the lead.</param>
         /// <param name="CompanyVATNumber">VAT number of the company for the lead.</param>
-        public LeadEnrichmentRequest(string ContactBusinessEmail = default(string), string CompanyName = default(string), string CompanyDomainName = default(string), string CompanyHouseNumber = default(string), string CompanyStreet = default(string), string CompanyCity = default(string), string CompanyStateOrProvince = default(string), string CompanyPostalCode = default(string), string CompanyCountry = default(string), string CompanyVATNumber = default(string))
+        public LeadEnrichmentRequest(string ContactBusinessEmail = default(string), string ContactFirstName = default(string), string ContactLastName = default(string), string CompanyName = default(string), string CompanyDomainName = default(string), string CompanyHouseNumber = default(string), string CompanyStreet = default(string), string CompanyCity = default(string), string CompanyStateOrProvince = default(string), string CompanyPostalCode = default(string), string CompanyCountry = default(string), string CompanyCountryCode = default(string), string CompanyTelephone = default(string), string CompanyVATNumber = default(string))
         {
             this.ContactBusinessEmail = ContactBusinessEmail;
+            this.ContactFirstName = ContactFirstName;
+            this.ContactLastName = ContactLastName;
             this.CompanyName = CompanyName;
             this.CompanyDomainName = CompanyDomainName;
             this.CompanyHouseNumber = CompanyHouseNumber;
@@ -54,6 +60,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             this.CompanyStateOrProvince = CompanyStateOrProvince;
             this.CompanyPostalCode = CompanyPostalCode;
             this.CompanyCountry = CompanyCountry;
+            this.CompanyCountryCode = CompanyCountryCode;
+            this.CompanyTelephone = CompanyTelephone;
             this.CompanyVATNumber = CompanyVATNumber;
         }
         
@@ -63,6 +71,20 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <value>The person&#39;s business email address for the lead</value>
         [DataMember(Name="ContactBusinessEmail", EmitDefaultValue=false)]
         public string ContactBusinessEmail { get; set; }
+
+        /// <summary>
+        /// The person&#39;s first name for the lead
+        /// </summary>
+        /// <value>The person&#39;s first name for the lead</value>
+        [DataMember(Name="ContactFirstName", EmitDefaultValue=false)]
+        public string ContactFirstName { get; set; }
+
+        /// <summary>
+        /// The person&#39;s last name for the lead
+        /// </summary>
+        /// <value>The person&#39;s last name for the lead</value>
+        [DataMember(Name="ContactLastName", EmitDefaultValue=false)]
+        public string ContactLastName { get; set; }
 
         /// <summary>
         /// Name of the company for the lead
@@ -121,6 +143,20 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public string CompanyCountry { get; set; }
 
         /// <summary>
+        /// Country Code (2-letter ISO 3166-1) of the address of the company for the lead
+        /// </summary>
+        /// <value>Country Code (2-letter ISO 3166-1) of the address of the company for the lead</value>
+        [DataMember(Name="CompanyCountryCode", EmitDefaultValue=false)]
+        public string CompanyCountryCode { get; set; }
+
+        /// <summary>
+        /// Telephone of the company office for the lead
+        /// </summary>
+        /// <value>Telephone of the company office for the lead</value>
+        [DataMember(Name="CompanyTelephone", EmitDefaultValue=false)]
+        public string CompanyTelephone { get; set; }
+
+        /// <summary>
         /// VAT number of the company for the lead
         /// </summary>
         /// <value>VAT number of the company for the lead</value>
@@ -136,6 +172,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             var sb = new StringBuilder();
             sb.Append("class LeadEnrichmentRequest {\n");
             sb.Append("  ContactBusinessEmail: ").Append(ContactBusinessEmail).Append("\n");
+            sb.Append("  ContactFirstName: ").Append(ContactFirstName).Append("\n");
+            sb.Append("  ContactLastName: ").Append(ContactLastName).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  CompanyDomainName: ").Append(CompanyDomainName).Append("\n");
             sb.Append("  CompanyHouseNumber: ").Append(CompanyHouseNumber).Append("\n");
@@ -144,6 +182,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             sb.Append("  CompanyStateOrProvince: ").Append(CompanyStateOrProvince).Append("\n");
             sb.Append("  CompanyPostalCode: ").Append(CompanyPostalCode).Append("\n");
             sb.Append("  CompanyCountry: ").Append(CompanyCountry).Append("\n");
+            sb.Append("  CompanyCountryCode: ").Append(CompanyCountryCode).Append("\n");
+            sb.Append("  CompanyTelephone: ").Append(CompanyTelephone).Append("\n");
             sb.Append("  CompanyVATNumber: ").Append(CompanyVATNumber).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -183,6 +223,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     this.ContactBusinessEmail == input.ContactBusinessEmail ||
                     (this.ContactBusinessEmail != null &&
                     this.ContactBusinessEmail.Equals(input.ContactBusinessEmail))
+                ) && 
+                (
+                    this.ContactFirstName == input.ContactFirstName ||
+                    (this.ContactFirstName != null &&
+                    this.ContactFirstName.Equals(input.ContactFirstName))
+                ) && 
+                (
+                    this.ContactLastName == input.ContactLastName ||
+                    (this.ContactLastName != null &&
+                    this.ContactLastName.Equals(input.ContactLastName))
                 ) && 
                 (
                     this.CompanyName == input.CompanyName ||
@@ -225,6 +275,16 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     this.CompanyCountry.Equals(input.CompanyCountry))
                 ) && 
                 (
+                    this.CompanyCountryCode == input.CompanyCountryCode ||
+                    (this.CompanyCountryCode != null &&
+                    this.CompanyCountryCode.Equals(input.CompanyCountryCode))
+                ) && 
+                (
+                    this.CompanyTelephone == input.CompanyTelephone ||
+                    (this.CompanyTelephone != null &&
+                    this.CompanyTelephone.Equals(input.CompanyTelephone))
+                ) && 
+                (
                     this.CompanyVATNumber == input.CompanyVATNumber ||
                     (this.CompanyVATNumber != null &&
                     this.CompanyVATNumber.Equals(input.CompanyVATNumber))
@@ -242,6 +302,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                 int hashCode = 41;
                 if (this.ContactBusinessEmail != null)
                     hashCode = hashCode * 59 + this.ContactBusinessEmail.GetHashCode();
+                if (this.ContactFirstName != null)
+                    hashCode = hashCode * 59 + this.ContactFirstName.GetHashCode();
+                if (this.ContactLastName != null)
+                    hashCode = hashCode * 59 + this.ContactLastName.GetHashCode();
                 if (this.CompanyName != null)
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.CompanyDomainName != null)
@@ -258,6 +322,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.CompanyPostalCode.GetHashCode();
                 if (this.CompanyCountry != null)
                     hashCode = hashCode * 59 + this.CompanyCountry.GetHashCode();
+                if (this.CompanyCountryCode != null)
+                    hashCode = hashCode * 59 + this.CompanyCountryCode.GetHashCode();
+                if (this.CompanyTelephone != null)
+                    hashCode = hashCode * 59 + this.CompanyTelephone.GetHashCode();
                 if (this.CompanyVATNumber != null)
                     hashCode = hashCode * 59 + this.CompanyVATNumber.GetHashCode();
                 return hashCode;
