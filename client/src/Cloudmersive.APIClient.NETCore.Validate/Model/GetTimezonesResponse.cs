@@ -25,13 +25,13 @@ using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.Swag
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
 {
     /// <summary>
-    /// Result of performing a country validation operation
+    /// Result of performing a get time zones operation
     /// </summary>
     [DataContract]
-    public partial class ValidateCountryResponse :  IEquatable<ValidateCountryResponse>, IValidatableObject
+    public partial class GetTimezonesResponse :  IEquatable<GetTimezonesResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidateCountryResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetTimezonesResponse" /> class.
         /// </summary>
         /// <param name="Successful">True if successful, false otherwise.</param>
         /// <param name="CountryFullName">Full name of the country.</param>
@@ -39,7 +39,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <param name="FIPSTwoLetterCode">Two-letter FIPS 10-4 country code.</param>
         /// <param name="ThreeLetterCode">Three-letter ISO 3166-1 country code.</param>
         /// <param name="Timezones">Time zones (IANA/Olsen) in the country.</param>
-        public ValidateCountryResponse(bool? Successful = default(bool?), string CountryFullName = default(string), string ISOTwoLetterCode = default(string), string FIPSTwoLetterCode = default(string), string ThreeLetterCode = default(string), List<Timezone> Timezones = default(List<Timezone>))
+        public GetTimezonesResponse(bool? Successful = default(bool?), string CountryFullName = default(string), string ISOTwoLetterCode = default(string), string FIPSTwoLetterCode = default(string), string ThreeLetterCode = default(string), List<Timezone> Timezones = default(List<Timezone>))
         {
             this.Successful = Successful;
             this.CountryFullName = CountryFullName;
@@ -98,7 +98,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ValidateCountryResponse {\n");
+            sb.Append("class GetTimezonesResponse {\n");
             sb.Append("  Successful: ").Append(Successful).Append("\n");
             sb.Append("  CountryFullName: ").Append(CountryFullName).Append("\n");
             sb.Append("  ISOTwoLetterCode: ").Append(ISOTwoLetterCode).Append("\n");
@@ -125,15 +125,15 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ValidateCountryResponse);
+            return this.Equals(input as GetTimezonesResponse);
         }
 
         /// <summary>
-        /// Returns true if ValidateCountryResponse instances are equal
+        /// Returns true if GetTimezonesResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of ValidateCountryResponse to be compared</param>
+        /// <param name="input">Instance of GetTimezonesResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ValidateCountryResponse input)
+        public bool Equals(GetTimezonesResponse input)
         {
             if (input == null)
                 return false;
