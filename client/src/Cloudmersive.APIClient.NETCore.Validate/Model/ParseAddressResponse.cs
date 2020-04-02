@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,31 +26,31 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of parsing an address into its component parts
     /// </summary>
     [DataContract]
-    public partial class ParseAddressResponse :  IEquatable<ParseAddressResponse>, IValidatableObject
+    public partial class ParseAddressResponse :  IEquatable<ParseAddressResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParseAddressResponse" /> class.
         /// </summary>
-        /// <param name="Successful">True if the parsing operation was successful, false otherwise.</param>
-        /// <param name="Building">The name of the building, house or structure if applicable, such as \&quot;Cloudmersive Building 2\&quot;.  This will often by null..</param>
-        /// <param name="StreetNumber">The street number or house number of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;1600\&quot;.  This value will typically be populated for most addresses..</param>
-        /// <param name="Street">The name of the street or road of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;Pennsylvania Avenue NW\&quot;..</param>
-        /// <param name="City">The city of the address..</param>
-        /// <param name="StateOrProvince">The state or province of the address..</param>
-        /// <param name="PostalCode">The postal code or zip code of the address..</param>
-        /// <param name="CountryFullName">Country of the address, if present in the address.  If not included in the address it will be null..</param>
-        /// <param name="ISOTwoLetterCode">Two-letter ISO 3166-1 country code.</param>
-        public ParseAddressResponse(bool? Successful = default(bool?), string Building = default(string), string StreetNumber = default(string), string Street = default(string), string City = default(string), string StateOrProvince = default(string), string PostalCode = default(string), string CountryFullName = default(string), string ISOTwoLetterCode = default(string))
+        /// <param name="successful">True if the parsing operation was successful, false otherwise.</param>
+        /// <param name="building">The name of the building, house or structure if applicable, such as \&quot;Cloudmersive Building 2\&quot;.  This will often by null..</param>
+        /// <param name="streetNumber">The street number or house number of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;1600\&quot;.  This value will typically be populated for most addresses..</param>
+        /// <param name="street">The name of the street or road of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;Pennsylvania Avenue NW\&quot;..</param>
+        /// <param name="city">The city of the address..</param>
+        /// <param name="stateOrProvince">The state or province of the address..</param>
+        /// <param name="postalCode">The postal code or zip code of the address..</param>
+        /// <param name="countryFullName">Country of the address, if present in the address.  If not included in the address it will be null..</param>
+        /// <param name="iSOTwoLetterCode">Two-letter ISO 3166-1 country code.</param>
+        public ParseAddressResponse(bool? successful = default(bool?), string building = default(string), string streetNumber = default(string), string street = default(string), string city = default(string), string stateOrProvince = default(string), string postalCode = default(string), string countryFullName = default(string), string iSOTwoLetterCode = default(string))
         {
-            this.Successful = Successful;
-            this.Building = Building;
-            this.StreetNumber = StreetNumber;
-            this.Street = Street;
-            this.City = City;
-            this.StateOrProvince = StateOrProvince;
-            this.PostalCode = PostalCode;
-            this.CountryFullName = CountryFullName;
-            this.ISOTwoLetterCode = ISOTwoLetterCode;
+            this.Successful = successful;
+            this.Building = building;
+            this.StreetNumber = streetNumber;
+            this.Street = street;
+            this.City = city;
+            this.StateOrProvince = stateOrProvince;
+            this.PostalCode = postalCode;
+            this.CountryFullName = countryFullName;
+            this.ISOTwoLetterCode = iSOTwoLetterCode;
         }
         
         /// <summary>
@@ -143,7 +141,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -245,16 +243,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.ISOTwoLetterCode.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

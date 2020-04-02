@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,19 +26,19 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// IANA/Olsen time zone
     /// </summary>
     [DataContract]
-    public partial class Timezone :  IEquatable<Timezone>, IValidatableObject
+    public partial class Timezone :  IEquatable<Timezone>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Timezone" /> class.
         /// </summary>
-        /// <param name="Name">Name of the Time Zone.</param>
-        /// <param name="BaseUTCOffset">UTC offset for this time zone.</param>
-        /// <param name="Now">The current time (Now) in this time zone.</param>
-        public Timezone(string Name = default(string), string BaseUTCOffset = default(string), DateTime? Now = default(DateTime?))
+        /// <param name="name">Name of the Time Zone.</param>
+        /// <param name="baseUTCOffset">UTC offset for this time zone.</param>
+        /// <param name="now">The current time (Now) in this time zone.</param>
+        public Timezone(string name = default(string), string baseUTCOffset = default(string), DateTime? now = default(DateTime?))
         {
-            this.Name = Name;
-            this.BaseUTCOffset = BaseUTCOffset;
-            this.Now = Now;
+            this.Name = name;
+            this.BaseUTCOffset = baseUTCOffset;
+            this.Now = now;
         }
         
         /// <summary>
@@ -83,7 +81,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -143,16 +141,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.Now.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

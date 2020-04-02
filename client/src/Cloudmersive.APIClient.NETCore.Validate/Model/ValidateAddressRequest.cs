@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,25 +26,25 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Request to Validate a Street Address
     /// </summary>
     [DataContract]
-    public partial class ValidateAddressRequest :  IEquatable<ValidateAddressRequest>, IValidatableObject
+    public partial class ValidateAddressRequest :  IEquatable<ValidateAddressRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateAddressRequest" /> class.
         /// </summary>
-        /// <param name="StreetAddress">Required; Street address to validate, such as &#39;2950 Buskirk Ave.&#39;.</param>
-        /// <param name="City">Required; City part of the addrerss to validate, such as &#39;Walnut Creek&#39;.</param>
-        /// <param name="StateOrProvince">Required; State or province of the address to validate, such as &#39;CA&#39; or &#39;California&#39;.</param>
-        /// <param name="PostalCode">Optional (recommended); Zip code or postal code of the address to validate, such as &#39;94597&#39;.</param>
-        /// <param name="CountryFullName">Optional (recommended); Name of the country, such as &#39;United States&#39;.  If left blank, and CountryCode is also left blank, will default to United States.  Global countries are supported..</param>
-        /// <param name="CountryCode">Optional; two-letter country code (Two-letter ISO 3166-1 country code) of the country.  If left blank, and CountryFullName is also left blank, will default to United States.  Global countries are supported..</param>
-        public ValidateAddressRequest(string StreetAddress = default(string), string City = default(string), string StateOrProvince = default(string), string PostalCode = default(string), string CountryFullName = default(string), string CountryCode = default(string))
+        /// <param name="streetAddress">Required; Street address to validate, such as &#39;2950 Buskirk Ave.&#39;.</param>
+        /// <param name="city">Required; City part of the addrerss to validate, such as &#39;Walnut Creek&#39;.</param>
+        /// <param name="stateOrProvince">Required; State or province of the address to validate, such as &#39;CA&#39; or &#39;California&#39;.</param>
+        /// <param name="postalCode">Optional (recommended); Zip code or postal code of the address to validate, such as &#39;94597&#39;.</param>
+        /// <param name="countryFullName">Optional (recommended); Name of the country, such as &#39;United States&#39;.  If left blank, and CountryCode is also left blank, will default to United States.  Global countries are supported..</param>
+        /// <param name="countryCode">Optional; two-letter country code (Two-letter ISO 3166-1 country code) of the country.  If left blank, and CountryFullName is also left blank, will default to United States.  Global countries are supported..</param>
+        public ValidateAddressRequest(string streetAddress = default(string), string city = default(string), string stateOrProvince = default(string), string postalCode = default(string), string countryFullName = default(string), string countryCode = default(string))
         {
-            this.StreetAddress = StreetAddress;
-            this.City = City;
-            this.StateOrProvince = StateOrProvince;
-            this.PostalCode = PostalCode;
-            this.CountryFullName = CountryFullName;
-            this.CountryCode = CountryCode;
+            this.StreetAddress = streetAddress;
+            this.City = city;
+            this.StateOrProvince = stateOrProvince;
+            this.PostalCode = postalCode;
+            this.CountryFullName = countryFullName;
+            this.CountryCode = countryCode;
         }
         
         /// <summary>
@@ -113,7 +111,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -194,16 +192,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.CountryCode.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,17 +26,17 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of performing an identifier validation operation
     /// </summary>
     [DataContract]
-    public partial class ValidateIdentifierResponse :  IEquatable<ValidateIdentifierResponse>, IValidatableObject
+    public partial class ValidateIdentifierResponse :  IEquatable<ValidateIdentifierResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateIdentifierResponse" /> class.
         /// </summary>
-        /// <param name="ValidIdentifier">True if the input identifier is valid, false otherwise.</param>
-        /// <param name="Error">Resulting error from the identifier validation; possible errors are: \&quot;InputIsEmpty\&quot;, \&quot;ContainsWhitespace\&quot;, \&quot;ContainsNumbers\&quot;, \&quot;ContainsHyphen\&quot;, \&quot;ContainsUnderscore\&quot;, \&quot;ContainsPeriod\&quot;, \&quot;TooShort\&quot;, \&quot;TooLong\&quot;, \&quot;ContainsSpecialCharacters\&quot;.</param>
-        public ValidateIdentifierResponse(bool? ValidIdentifier = default(bool?), string Error = default(string))
+        /// <param name="validIdentifier">True if the input identifier is valid, false otherwise.</param>
+        /// <param name="error">Resulting error from the identifier validation; possible errors are: \&quot;InputIsEmpty\&quot;, \&quot;ContainsWhitespace\&quot;, \&quot;ContainsNumbers\&quot;, \&quot;ContainsHyphen\&quot;, \&quot;ContainsUnderscore\&quot;, \&quot;ContainsPeriod\&quot;, \&quot;TooShort\&quot;, \&quot;TooLong\&quot;, \&quot;ContainsSpecialCharacters\&quot;.</param>
+        public ValidateIdentifierResponse(bool? validIdentifier = default(bool?), string error = default(string))
         {
-            this.ValidIdentifier = ValidIdentifier;
-            this.Error = Error;
+            this.ValidIdentifier = validIdentifier;
+            this.Error = error;
         }
         
         /// <summary>
@@ -73,7 +71,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -126,16 +124,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.Error.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

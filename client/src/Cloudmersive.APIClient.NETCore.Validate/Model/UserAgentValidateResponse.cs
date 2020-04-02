@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,41 +26,41 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// The result of a User-Agent validation request
     /// </summary>
     [DataContract]
-    public partial class UserAgentValidateResponse :  IEquatable<UserAgentValidateResponse>, IValidatableObject
+    public partial class UserAgentValidateResponse :  IEquatable<UserAgentValidateResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAgentValidateResponse" /> class.
         /// </summary>
-        /// <param name="Successful">True if the operation was successful, false otherwise.</param>
-        /// <param name="IsBot">True if the request is a known robot, false otherwise.</param>
-        /// <param name="BotName">Optional; name of the robot if the request was from a known robot, otherwise null.</param>
-        /// <param name="BotURL">Optional; if available, the URL to the robot.</param>
-        /// <param name="OperatingSystem">Operating System of the User-Agent (e.g. Windows).</param>
-        /// <param name="OperatingSystemCPUPlatform">The CPU platform of the User-Agent (e.g. x64).</param>
-        /// <param name="OperatingSystemVersion">The version of the operating system of the User-Agent (e.g. \&quot;10\&quot; for Windows 10).</param>
-        /// <param name="DeviceType">Device type of the User-Agent; possible values are \&quot;DESKTOP\&quot;, \&quot;SMARTPHONE\&quot;, \&quot;TABLET\&quot;.</param>
-        /// <param name="DeviceBrandName">Brand name of the User-Agent.</param>
-        /// <param name="DeviceModel">Model name or number of the User-Agent.</param>
-        /// <param name="BrowserName">Name of the Browser.</param>
-        /// <param name="BrowserVersion">Version of the Browser.</param>
-        /// <param name="BrowserEngineName">Name of the Browser Engine.</param>
-        /// <param name="BrowserEngineVersion">Version of the Browser Engine.</param>
-        public UserAgentValidateResponse(bool? Successful = default(bool?), bool? IsBot = default(bool?), string BotName = default(string), string BotURL = default(string), string OperatingSystem = default(string), string OperatingSystemCPUPlatform = default(string), string OperatingSystemVersion = default(string), string DeviceType = default(string), string DeviceBrandName = default(string), string DeviceModel = default(string), string BrowserName = default(string), string BrowserVersion = default(string), string BrowserEngineName = default(string), string BrowserEngineVersion = default(string))
+        /// <param name="successful">True if the operation was successful, false otherwise.</param>
+        /// <param name="isBot">True if the request is a known robot, false otherwise.</param>
+        /// <param name="botName">Optional; name of the robot if the request was from a known robot, otherwise null.</param>
+        /// <param name="botURL">Optional; if available, the URL to the robot.</param>
+        /// <param name="operatingSystem">Operating System of the User-Agent (e.g. Windows).</param>
+        /// <param name="operatingSystemCPUPlatform">The CPU platform of the User-Agent (e.g. x64).</param>
+        /// <param name="operatingSystemVersion">The version of the operating system of the User-Agent (e.g. \&quot;10\&quot; for Windows 10).</param>
+        /// <param name="deviceType">Device type of the User-Agent; possible values are \&quot;DESKTOP\&quot;, \&quot;SMARTPHONE\&quot;, \&quot;TABLET\&quot;.</param>
+        /// <param name="deviceBrandName">Brand name of the User-Agent.</param>
+        /// <param name="deviceModel">Model name or number of the User-Agent.</param>
+        /// <param name="browserName">Name of the Browser.</param>
+        /// <param name="browserVersion">Version of the Browser.</param>
+        /// <param name="browserEngineName">Name of the Browser Engine.</param>
+        /// <param name="browserEngineVersion">Version of the Browser Engine.</param>
+        public UserAgentValidateResponse(bool? successful = default(bool?), bool? isBot = default(bool?), string botName = default(string), string botURL = default(string), string operatingSystem = default(string), string operatingSystemCPUPlatform = default(string), string operatingSystemVersion = default(string), string deviceType = default(string), string deviceBrandName = default(string), string deviceModel = default(string), string browserName = default(string), string browserVersion = default(string), string browserEngineName = default(string), string browserEngineVersion = default(string))
         {
-            this.Successful = Successful;
-            this.IsBot = IsBot;
-            this.BotName = BotName;
-            this.BotURL = BotURL;
-            this.OperatingSystem = OperatingSystem;
-            this.OperatingSystemCPUPlatform = OperatingSystemCPUPlatform;
-            this.OperatingSystemVersion = OperatingSystemVersion;
-            this.DeviceType = DeviceType;
-            this.DeviceBrandName = DeviceBrandName;
-            this.DeviceModel = DeviceModel;
-            this.BrowserName = BrowserName;
-            this.BrowserVersion = BrowserVersion;
-            this.BrowserEngineName = BrowserEngineName;
-            this.BrowserEngineVersion = BrowserEngineVersion;
+            this.Successful = successful;
+            this.IsBot = isBot;
+            this.BotName = botName;
+            this.BotURL = botURL;
+            this.OperatingSystem = operatingSystem;
+            this.OperatingSystemCPUPlatform = operatingSystemCPUPlatform;
+            this.OperatingSystemVersion = operatingSystemVersion;
+            this.DeviceType = deviceType;
+            this.DeviceBrandName = deviceBrandName;
+            this.DeviceModel = deviceModel;
+            this.BrowserName = browserName;
+            this.BrowserVersion = browserVersion;
+            this.BrowserEngineName = browserEngineName;
+            this.BrowserEngineVersion = browserEngineVersion;
         }
         
         /// <summary>
@@ -193,7 +191,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -330,16 +328,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.BrowserEngineVersion.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

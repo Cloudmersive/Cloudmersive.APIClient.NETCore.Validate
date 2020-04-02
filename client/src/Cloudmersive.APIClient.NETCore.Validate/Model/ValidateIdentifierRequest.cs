@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,29 +26,29 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Identifier validation request, including the input identifier as well as various identifier rules
     /// </summary>
     [DataContract]
-    public partial class ValidateIdentifierRequest :  IEquatable<ValidateIdentifierRequest>, IValidatableObject
+    public partial class ValidateIdentifierRequest :  IEquatable<ValidateIdentifierRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateIdentifierRequest" /> class.
         /// </summary>
-        /// <param name="Input">Text string identifier input.</param>
-        /// <param name="AllowWhitespace">True if whitespace is allowed in the identifier, false otherwise.</param>
-        /// <param name="AllowHyphens">True if hyphens are allowd in the identifier, false otherwise.</param>
-        /// <param name="AllowUnderscore">True if underscores are allowed in the identifier, false otherwise.</param>
-        /// <param name="AllowNumbers">True if numbers are allowed in the identifier, false otherwise.</param>
-        /// <param name="AllowPeriods">True if periods are allowed in the identifier, false otherwise.</param>
-        /// <param name="MaxLength">Optional; maximum length, if any, of the identifier.</param>
-        /// <param name="MinLength">Optional; minimum length, if any, of the identifier.</param>
-        public ValidateIdentifierRequest(string Input = default(string), bool? AllowWhitespace = default(bool?), bool? AllowHyphens = default(bool?), bool? AllowUnderscore = default(bool?), bool? AllowNumbers = default(bool?), bool? AllowPeriods = default(bool?), int? MaxLength = default(int?), int? MinLength = default(int?))
+        /// <param name="input">Text string identifier input.</param>
+        /// <param name="allowWhitespace">True if whitespace is allowed in the identifier, false otherwise.</param>
+        /// <param name="allowHyphens">True if hyphens are allowd in the identifier, false otherwise.</param>
+        /// <param name="allowUnderscore">True if underscores are allowed in the identifier, false otherwise.</param>
+        /// <param name="allowNumbers">True if numbers are allowed in the identifier, false otherwise.</param>
+        /// <param name="allowPeriods">True if periods are allowed in the identifier, false otherwise.</param>
+        /// <param name="maxLength">Optional; maximum length, if any, of the identifier.</param>
+        /// <param name="minLength">Optional; minimum length, if any, of the identifier.</param>
+        public ValidateIdentifierRequest(string input = default(string), bool? allowWhitespace = default(bool?), bool? allowHyphens = default(bool?), bool? allowUnderscore = default(bool?), bool? allowNumbers = default(bool?), bool? allowPeriods = default(bool?), int? maxLength = default(int?), int? minLength = default(int?))
         {
-            this.Input = Input;
-            this.AllowWhitespace = AllowWhitespace;
-            this.AllowHyphens = AllowHyphens;
-            this.AllowUnderscore = AllowUnderscore;
-            this.AllowNumbers = AllowNumbers;
-            this.AllowPeriods = AllowPeriods;
-            this.MaxLength = MaxLength;
-            this.MinLength = MinLength;
+            this.Input = input;
+            this.AllowWhitespace = allowWhitespace;
+            this.AllowHyphens = allowHyphens;
+            this.AllowUnderscore = allowUnderscore;
+            this.AllowNumbers = allowNumbers;
+            this.AllowPeriods = allowPeriods;
+            this.MaxLength = maxLength;
+            this.MinLength = minLength;
         }
         
         /// <summary>
@@ -133,7 +131,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -228,16 +226,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.MinLength.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

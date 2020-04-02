@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,23 +26,23 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of validating a URL with full validation
     /// </summary>
     [DataContract]
-    public partial class ValidateUrlResponseFull :  IEquatable<ValidateUrlResponseFull>, IValidatableObject
+    public partial class ValidateUrlResponseFull :  IEquatable<ValidateUrlResponseFull>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateUrlResponseFull" /> class.
         /// </summary>
-        /// <param name="ValidURL">True if the URL has valid syntax, a valid domain, a valid endpoint, and passes virus scan checks; false otherwise.</param>
-        /// <param name="ValidSyntax">True if the URL has valid syntax, false otherwise.</param>
-        /// <param name="ValidDomain">True if the domain name is valid and exists, false otherwise.</param>
-        /// <param name="ValidEndpoint">True if the endpoint is up and responsive and passes a virus scan check, false otherwise.</param>
-        /// <param name="WellFormedURL">Well-formed version of the URL.</param>
-        public ValidateUrlResponseFull(bool? ValidURL = default(bool?), bool? ValidSyntax = default(bool?), bool? ValidDomain = default(bool?), bool? ValidEndpoint = default(bool?), string WellFormedURL = default(string))
+        /// <param name="validURL">True if the URL has valid syntax, a valid domain, a valid endpoint, and passes virus scan checks; false otherwise.</param>
+        /// <param name="validSyntax">True if the URL has valid syntax, false otherwise.</param>
+        /// <param name="validDomain">True if the domain name is valid and exists, false otherwise.</param>
+        /// <param name="validEndpoint">True if the endpoint is up and responsive and passes a virus scan check, false otherwise.</param>
+        /// <param name="wellFormedURL">Well-formed version of the URL.</param>
+        public ValidateUrlResponseFull(bool? validURL = default(bool?), bool? validSyntax = default(bool?), bool? validDomain = default(bool?), bool? validEndpoint = default(bool?), string wellFormedURL = default(string))
         {
-            this.ValidURL = ValidURL;
-            this.ValidSyntax = ValidSyntax;
-            this.ValidDomain = ValidDomain;
-            this.ValidEndpoint = ValidEndpoint;
-            this.WellFormedURL = WellFormedURL;
+            this.ValidURL = validURL;
+            this.ValidSyntax = validSyntax;
+            this.ValidDomain = validDomain;
+            this.ValidEndpoint = validEndpoint;
+            this.WellFormedURL = wellFormedURL;
         }
         
         /// <summary>
@@ -103,7 +101,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -177,16 +175,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.WellFormedURL.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,21 +26,21 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Syntactic validity of email address
     /// </summary>
     [DataContract]
-    public partial class AddressVerifySyntaxOnlyResponse :  IEquatable<AddressVerifySyntaxOnlyResponse>, IValidatableObject
+    public partial class AddressVerifySyntaxOnlyResponse :  IEquatable<AddressVerifySyntaxOnlyResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressVerifySyntaxOnlyResponse" /> class.
         /// </summary>
-        /// <param name="ValidAddress">True if the email address is syntactically valid, false if it is not.</param>
-        /// <param name="Domain">Domain name of the email address.</param>
-        /// <param name="IsFreeEmailProvider">True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise..</param>
-        /// <param name="IsDisposable">True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there..</param>
-        public AddressVerifySyntaxOnlyResponse(bool? ValidAddress = default(bool?), string Domain = default(string), bool? IsFreeEmailProvider = default(bool?), bool? IsDisposable = default(bool?))
+        /// <param name="validAddress">True if the email address is syntactically valid, false if it is not.</param>
+        /// <param name="domain">Domain name of the email address.</param>
+        /// <param name="isFreeEmailProvider">True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise..</param>
+        /// <param name="isDisposable">True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there..</param>
+        public AddressVerifySyntaxOnlyResponse(bool? validAddress = default(bool?), string domain = default(string), bool? isFreeEmailProvider = default(bool?), bool? isDisposable = default(bool?))
         {
-            this.ValidAddress = ValidAddress;
-            this.Domain = Domain;
-            this.IsFreeEmailProvider = IsFreeEmailProvider;
-            this.IsDisposable = IsDisposable;
+            this.ValidAddress = validAddress;
+            this.Domain = domain;
+            this.IsFreeEmailProvider = isFreeEmailProvider;
+            this.IsDisposable = isDisposable;
         }
         
         /// <summary>
@@ -93,7 +91,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -160,16 +158,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.IsDisposable.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

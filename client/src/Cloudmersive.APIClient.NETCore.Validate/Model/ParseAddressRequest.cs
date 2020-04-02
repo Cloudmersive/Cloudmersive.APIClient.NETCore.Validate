@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,17 +26,17 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Request to parse an address formatted as a string/free text into a structured address
     /// </summary>
     [DataContract]
-    public partial class ParseAddressRequest :  IEquatable<ParseAddressRequest>, IValidatableObject
+    public partial class ParseAddressRequest :  IEquatable<ParseAddressRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ParseAddressRequest" /> class.
         /// </summary>
-        /// <param name="AddressString">A mailing address or street address formatted as a single text string; this will be parsed into its components.</param>
-        /// <param name="CapitalizationMode">Optional; indicates how the parsed output should be capitalized; default is Title Case; possible values are: \&quot;Uppercase\&quot; will set the capitalization to UPPER CASE; \&quot;Lowercase\&quot; will set the capitalization to lower case; \&quot;Titlecase\&quot; will set the capitalization to Title Case; and \&quot;Originalcase\&quot; will preserve the original casing as much as possible.</param>
-        public ParseAddressRequest(string AddressString = default(string), string CapitalizationMode = default(string))
+        /// <param name="addressString">A mailing address or street address formatted as a single text string; this will be parsed into its components.</param>
+        /// <param name="capitalizationMode">Optional; indicates how the parsed output should be capitalized; default is Title Case; possible values are: \&quot;Uppercase\&quot; will set the capitalization to UPPER CASE; \&quot;Lowercase\&quot; will set the capitalization to lower case; \&quot;Titlecase\&quot; will set the capitalization to Title Case; and \&quot;Originalcase\&quot; will preserve the original casing as much as possible.</param>
+        public ParseAddressRequest(string addressString = default(string), string capitalizationMode = default(string))
         {
-            this.AddressString = AddressString;
-            this.CapitalizationMode = CapitalizationMode;
+            this.AddressString = addressString;
+            this.CapitalizationMode = capitalizationMode;
         }
         
         /// <summary>
@@ -73,7 +71,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -126,16 +124,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.CapitalizationMode.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

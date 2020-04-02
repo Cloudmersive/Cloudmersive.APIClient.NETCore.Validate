@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,17 +26,17 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of validating a URL with syntax only
     /// </summary>
     [DataContract]
-    public partial class ValidateUrlResponseSyntaxOnly :  IEquatable<ValidateUrlResponseSyntaxOnly>, IValidatableObject
+    public partial class ValidateUrlResponseSyntaxOnly :  IEquatable<ValidateUrlResponseSyntaxOnly>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateUrlResponseSyntaxOnly" /> class.
         /// </summary>
-        /// <param name="ValidURL">True if the URL is valid, false otherwise.</param>
-        /// <param name="WellFormedURL">Well-formed version of the URL.</param>
-        public ValidateUrlResponseSyntaxOnly(bool? ValidURL = default(bool?), string WellFormedURL = default(string))
+        /// <param name="validURL">True if the URL is valid, false otherwise.</param>
+        /// <param name="wellFormedURL">Well-formed version of the URL.</param>
+        public ValidateUrlResponseSyntaxOnly(bool? validURL = default(bool?), string wellFormedURL = default(string))
         {
-            this.ValidURL = ValidURL;
-            this.WellFormedURL = WellFormedURL;
+            this.ValidURL = validURL;
+            this.WellFormedURL = wellFormedURL;
         }
         
         /// <summary>
@@ -73,7 +71,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -126,16 +124,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.WellFormedURL.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

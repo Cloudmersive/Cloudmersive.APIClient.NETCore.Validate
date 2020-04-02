@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,17 +26,17 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of a first name validation operation
     /// </summary>
     [DataContract]
-    public partial class FirstNameValidationResponse :  IEquatable<FirstNameValidationResponse>, IValidatableObject
+    public partial class FirstNameValidationResponse :  IEquatable<FirstNameValidationResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FirstNameValidationResponse" /> class.
         /// </summary>
-        /// <param name="Successful">True if the validation operation was successful, false otherwise.</param>
-        /// <param name="ValidationResult">Possible values are: ValidFirstName, ValidUnknownFirstName, InvalidSpamInput, InvalidCharacters, InvalidEmpty.</param>
-        public FirstNameValidationResponse(bool? Successful = default(bool?), string ValidationResult = default(string))
+        /// <param name="successful">True if the validation operation was successful, false otherwise.</param>
+        /// <param name="validationResult">Possible values are: ValidFirstName, ValidUnknownFirstName, InvalidSpamInput, InvalidCharacters, InvalidEmpty.</param>
+        public FirstNameValidationResponse(bool? successful = default(bool?), string validationResult = default(string))
         {
-            this.Successful = Successful;
-            this.ValidationResult = ValidationResult;
+            this.Successful = successful;
+            this.ValidationResult = validationResult;
         }
         
         /// <summary>
@@ -73,7 +71,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -126,16 +124,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.ValidationResult.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

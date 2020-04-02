@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,41 +26,41 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Input lead contact; fill in known fields to extend them with matched field values
     /// </summary>
     [DataContract]
-    public partial class LeadEnrichmentRequest :  IEquatable<LeadEnrichmentRequest>, IValidatableObject
+    public partial class LeadEnrichmentRequest :  IEquatable<LeadEnrichmentRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LeadEnrichmentRequest" /> class.
         /// </summary>
-        /// <param name="ContactBusinessEmail">The person&#39;s business email address for the lead.</param>
-        /// <param name="ContactFirstName">The person&#39;s first name for the lead.</param>
-        /// <param name="ContactLastName">The person&#39;s last name for the lead.</param>
-        /// <param name="CompanyName">Name of the company for the lead.</param>
-        /// <param name="CompanyDomainName">Domain name / website for the lead.</param>
-        /// <param name="CompanyHouseNumber">House number of the address of the company for the lead.</param>
-        /// <param name="CompanyStreet">Street name of the address of the company for the lead.</param>
-        /// <param name="CompanyCity">City of the address of the company for the lead.</param>
-        /// <param name="CompanyStateOrProvince">State or Province of the address of the company for the lead.</param>
-        /// <param name="CompanyPostalCode">Postal Code of the address of the company for the lead.</param>
-        /// <param name="CompanyCountry">Country of the address of the company for the lead.</param>
-        /// <param name="CompanyCountryCode">Country Code (2-letter ISO 3166-1) of the address of the company for the lead.</param>
-        /// <param name="CompanyTelephone">Telephone of the company office for the lead.</param>
-        /// <param name="CompanyVATNumber">VAT number of the company for the lead.</param>
-        public LeadEnrichmentRequest(string ContactBusinessEmail = default(string), string ContactFirstName = default(string), string ContactLastName = default(string), string CompanyName = default(string), string CompanyDomainName = default(string), string CompanyHouseNumber = default(string), string CompanyStreet = default(string), string CompanyCity = default(string), string CompanyStateOrProvince = default(string), string CompanyPostalCode = default(string), string CompanyCountry = default(string), string CompanyCountryCode = default(string), string CompanyTelephone = default(string), string CompanyVATNumber = default(string))
+        /// <param name="contactBusinessEmail">The person&#39;s business email address for the lead.</param>
+        /// <param name="contactFirstName">The person&#39;s first name for the lead.</param>
+        /// <param name="contactLastName">The person&#39;s last name for the lead.</param>
+        /// <param name="companyName">Name of the company for the lead.</param>
+        /// <param name="companyDomainName">Domain name / website for the lead.</param>
+        /// <param name="companyHouseNumber">House number of the address of the company for the lead.</param>
+        /// <param name="companyStreet">Street name of the address of the company for the lead.</param>
+        /// <param name="companyCity">City of the address of the company for the lead.</param>
+        /// <param name="companyStateOrProvince">State or Province of the address of the company for the lead.</param>
+        /// <param name="companyPostalCode">Postal Code of the address of the company for the lead.</param>
+        /// <param name="companyCountry">Country of the address of the company for the lead.</param>
+        /// <param name="companyCountryCode">Country Code (2-letter ISO 3166-1) of the address of the company for the lead.</param>
+        /// <param name="companyTelephone">Telephone of the company office for the lead.</param>
+        /// <param name="companyVATNumber">VAT number of the company for the lead.</param>
+        public LeadEnrichmentRequest(string contactBusinessEmail = default(string), string contactFirstName = default(string), string contactLastName = default(string), string companyName = default(string), string companyDomainName = default(string), string companyHouseNumber = default(string), string companyStreet = default(string), string companyCity = default(string), string companyStateOrProvince = default(string), string companyPostalCode = default(string), string companyCountry = default(string), string companyCountryCode = default(string), string companyTelephone = default(string), string companyVATNumber = default(string))
         {
-            this.ContactBusinessEmail = ContactBusinessEmail;
-            this.ContactFirstName = ContactFirstName;
-            this.ContactLastName = ContactLastName;
-            this.CompanyName = CompanyName;
-            this.CompanyDomainName = CompanyDomainName;
-            this.CompanyHouseNumber = CompanyHouseNumber;
-            this.CompanyStreet = CompanyStreet;
-            this.CompanyCity = CompanyCity;
-            this.CompanyStateOrProvince = CompanyStateOrProvince;
-            this.CompanyPostalCode = CompanyPostalCode;
-            this.CompanyCountry = CompanyCountry;
-            this.CompanyCountryCode = CompanyCountryCode;
-            this.CompanyTelephone = CompanyTelephone;
-            this.CompanyVATNumber = CompanyVATNumber;
+            this.ContactBusinessEmail = contactBusinessEmail;
+            this.ContactFirstName = contactFirstName;
+            this.ContactLastName = contactLastName;
+            this.CompanyName = companyName;
+            this.CompanyDomainName = companyDomainName;
+            this.CompanyHouseNumber = companyHouseNumber;
+            this.CompanyStreet = companyStreet;
+            this.CompanyCity = companyCity;
+            this.CompanyStateOrProvince = companyStateOrProvince;
+            this.CompanyPostalCode = companyPostalCode;
+            this.CompanyCountry = companyCountry;
+            this.CompanyCountryCode = companyCountryCode;
+            this.CompanyTelephone = companyTelephone;
+            this.CompanyVATNumber = companyVATNumber;
         }
         
         /// <summary>
@@ -193,7 +191,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -330,16 +328,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.CompanyVATNumber.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

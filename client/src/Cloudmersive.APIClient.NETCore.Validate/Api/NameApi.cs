@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using Cloudmersive.APIClient.NETCore.Validate.Client;
 using Cloudmersive.APIClient.NETCore.Validate.Model;
 
@@ -252,7 +252,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
         /// <returns></returns>
         public NameApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new Cloudmersive.APIClient.NETCore.Validate.Client.Configuration { BasePath = basePath };
 
             ExceptionFactory = Cloudmersive.APIClient.NETCore.Validate.Client.Configuration.DefaultExceptionFactory;
         }
@@ -263,10 +263,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public NameApi(Configuration configuration = null)
+        public NameApi(Cloudmersive.APIClient.NETCore.Validate.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                this.Configuration = Cloudmersive.APIClient.NETCore.Validate.Client.Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -296,7 +296,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public Cloudmersive.APIClient.NETCore.Validate.Client.Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -360,10 +360,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameGetGender");
 
-            var localVarPath = "/validate/name/get-gender";
+            var localVarPath = "./validate/name/get-gender";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -373,7 +373,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -382,13 +382,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -396,13 +396,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -415,8 +415,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<GetGenderResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GetGenderResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetGenderResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetGenderResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetGenderResponse)));
         }
 
         /// <summary>
@@ -444,10 +444,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameGetGender");
 
-            var localVarPath = "/validate/name/get-gender";
+            var localVarPath = "./validate/name/get-gender";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -457,7 +457,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -466,13 +466,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -480,13 +480,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -499,8 +499,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<GetGenderResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GetGenderResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetGenderResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (GetGenderResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetGenderResponse)));
         }
 
         /// <summary>
@@ -527,10 +527,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameIdentifier");
 
-            var localVarPath = "/validate/name/identifier";
+            var localVarPath = "./validate/name/identifier";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -540,7 +540,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -549,13 +549,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -563,13 +563,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -582,8 +582,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<ValidateIdentifierResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ValidateIdentifierResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ValidateIdentifierResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (ValidateIdentifierResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ValidateIdentifierResponse)));
         }
 
         /// <summary>
@@ -611,10 +611,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameIdentifier");
 
-            var localVarPath = "/validate/name/identifier";
+            var localVarPath = "./validate/name/identifier";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -624,7 +624,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -633,13 +633,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -647,13 +647,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -666,8 +666,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<ValidateIdentifierResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ValidateIdentifierResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ValidateIdentifierResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (ValidateIdentifierResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ValidateIdentifierResponse)));
         }
 
         /// <summary>
@@ -694,10 +694,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateFirstName");
 
-            var localVarPath = "/validate/name/first";
+            var localVarPath = "./validate/name/first";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -707,7 +707,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -716,13 +716,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -730,13 +730,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -749,8 +749,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<FirstNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FirstNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FirstNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FirstNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FirstNameValidationResponse)));
         }
 
         /// <summary>
@@ -778,10 +778,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateFirstName");
 
-            var localVarPath = "/validate/name/first";
+            var localVarPath = "./validate/name/first";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -791,7 +791,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -800,13 +800,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -814,13 +814,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -833,8 +833,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<FirstNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FirstNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FirstNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FirstNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FirstNameValidationResponse)));
         }
 
         /// <summary>
@@ -861,10 +861,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateFullName");
 
-            var localVarPath = "/validate/name/full-name";
+            var localVarPath = "./validate/name/full-name";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -874,7 +874,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -883,13 +883,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -897,13 +897,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -916,8 +916,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<FullNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FullNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FullNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FullNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FullNameValidationResponse)));
         }
 
         /// <summary>
@@ -945,10 +945,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateFullName");
 
-            var localVarPath = "/validate/name/full-name";
+            var localVarPath = "./validate/name/full-name";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -958,7 +958,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -967,13 +967,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -981,13 +981,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1000,8 +1000,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<FullNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FullNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(FullNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (FullNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FullNameValidationResponse)));
         }
 
         /// <summary>
@@ -1028,10 +1028,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateLastName");
 
-            var localVarPath = "/validate/name/last";
+            var localVarPath = "./validate/name/last";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1041,7 +1041,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -1050,13 +1050,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -1064,13 +1064,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1083,8 +1083,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<LastNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LastNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LastNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (LastNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LastNameValidationResponse)));
         }
 
         /// <summary>
@@ -1112,10 +1112,10 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             if (input == null)
                 throw new ApiException(400, "Missing required parameter 'input' when calling NameApi->NameValidateLastName");
 
-            var localVarPath = "/validate/name/last";
+            var localVarPath = "./validate/name/last";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1125,7 +1125,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/json", 
                 "text/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
@@ -1134,13 +1134,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
                 "application/xml",
                 "text/xml"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (input != null && input.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(input); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
             }
             else
             {
@@ -1148,13 +1148,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Apikey")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
             {
-                localVarHeaderParams["Apikey"] = Configuration.GetApiKeyWithPrefix("Apikey");
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1167,8 +1167,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Api
             }
 
             return new ApiResponse<LastNameValidationResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LastNameValidationResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(LastNameValidationResponse)));
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (LastNameValidationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LastNameValidationResponse)));
         }
 
     }

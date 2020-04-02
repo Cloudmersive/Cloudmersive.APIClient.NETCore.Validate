@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,43 +26,43 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of a WHOIS operation
     /// </summary>
     [DataContract]
-    public partial class WhoisResponse :  IEquatable<WhoisResponse>, IValidatableObject
+    public partial class WhoisResponse :  IEquatable<WhoisResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WhoisResponse" /> class.
         /// </summary>
-        /// <param name="ValidDomain">True if the domain is valid, false if it is not.</param>
-        /// <param name="RegistrantName">Name of the domain registrant.</param>
-        /// <param name="RegistrantOrganization">Organization name of the domain registrant.</param>
-        /// <param name="RegistrantEmail">Email address of the domain registrant.</param>
-        /// <param name="RegistrantStreetNumber">Street number of the address of the domain registrant, if available.</param>
-        /// <param name="RegistrantStreet">Street name of the address of the domain registrant, if available.</param>
-        /// <param name="RegistrantCity">City of the domain registrant, if available.</param>
-        /// <param name="RegistrantStateOrProvince">State or Province of the address of the domain registrant, if available.</param>
-        /// <param name="RegistrantPostalCode">Postal code of the address of the domain registrant, if available.</param>
-        /// <param name="RegistrantCountry">Country of the address of the domain registrant, if available.</param>
-        /// <param name="RegistrantRawAddress">Raw address string of the domain registrant, if available.</param>
-        /// <param name="RegistrantTelephone">Telephone number of the address of the domain registrant.</param>
-        /// <param name="WhoisServer">Server used to lookup WHOIS information (may change based on lookup)..</param>
-        /// <param name="RawTextRecord">WHOIS raw text record.</param>
-        /// <param name="CreatedDt">Creation date for the record.</param>
-        public WhoisResponse(bool? ValidDomain = default(bool?), string RegistrantName = default(string), string RegistrantOrganization = default(string), string RegistrantEmail = default(string), string RegistrantStreetNumber = default(string), string RegistrantStreet = default(string), string RegistrantCity = default(string), string RegistrantStateOrProvince = default(string), string RegistrantPostalCode = default(string), string RegistrantCountry = default(string), string RegistrantRawAddress = default(string), string RegistrantTelephone = default(string), string WhoisServer = default(string), string RawTextRecord = default(string), DateTime? CreatedDt = default(DateTime?))
+        /// <param name="validDomain">True if the domain is valid, false if it is not.</param>
+        /// <param name="registrantName">Name of the domain registrant.</param>
+        /// <param name="registrantOrganization">Organization name of the domain registrant.</param>
+        /// <param name="registrantEmail">Email address of the domain registrant.</param>
+        /// <param name="registrantStreetNumber">Street number of the address of the domain registrant, if available.</param>
+        /// <param name="registrantStreet">Street name of the address of the domain registrant, if available.</param>
+        /// <param name="registrantCity">City of the domain registrant, if available.</param>
+        /// <param name="registrantStateOrProvince">State or Province of the address of the domain registrant, if available.</param>
+        /// <param name="registrantPostalCode">Postal code of the address of the domain registrant, if available.</param>
+        /// <param name="registrantCountry">Country of the address of the domain registrant, if available.</param>
+        /// <param name="registrantRawAddress">Raw address string of the domain registrant, if available.</param>
+        /// <param name="registrantTelephone">Telephone number of the address of the domain registrant.</param>
+        /// <param name="whoisServer">Server used to lookup WHOIS information (may change based on lookup)..</param>
+        /// <param name="rawTextRecord">WHOIS raw text record.</param>
+        /// <param name="createdDt">Creation date for the record.</param>
+        public WhoisResponse(bool? validDomain = default(bool?), string registrantName = default(string), string registrantOrganization = default(string), string registrantEmail = default(string), string registrantStreetNumber = default(string), string registrantStreet = default(string), string registrantCity = default(string), string registrantStateOrProvince = default(string), string registrantPostalCode = default(string), string registrantCountry = default(string), string registrantRawAddress = default(string), string registrantTelephone = default(string), string whoisServer = default(string), string rawTextRecord = default(string), DateTime? createdDt = default(DateTime?))
         {
-            this.ValidDomain = ValidDomain;
-            this.RegistrantName = RegistrantName;
-            this.RegistrantOrganization = RegistrantOrganization;
-            this.RegistrantEmail = RegistrantEmail;
-            this.RegistrantStreetNumber = RegistrantStreetNumber;
-            this.RegistrantStreet = RegistrantStreet;
-            this.RegistrantCity = RegistrantCity;
-            this.RegistrantStateOrProvince = RegistrantStateOrProvince;
-            this.RegistrantPostalCode = RegistrantPostalCode;
-            this.RegistrantCountry = RegistrantCountry;
-            this.RegistrantRawAddress = RegistrantRawAddress;
-            this.RegistrantTelephone = RegistrantTelephone;
-            this.WhoisServer = WhoisServer;
-            this.RawTextRecord = RawTextRecord;
-            this.CreatedDt = CreatedDt;
+            this.ValidDomain = validDomain;
+            this.RegistrantName = registrantName;
+            this.RegistrantOrganization = registrantOrganization;
+            this.RegistrantEmail = registrantEmail;
+            this.RegistrantStreetNumber = registrantStreetNumber;
+            this.RegistrantStreet = registrantStreet;
+            this.RegistrantCity = registrantCity;
+            this.RegistrantStateOrProvince = registrantStateOrProvince;
+            this.RegistrantPostalCode = registrantPostalCode;
+            this.RegistrantCountry = registrantCountry;
+            this.RegistrantRawAddress = registrantRawAddress;
+            this.RegistrantTelephone = registrantTelephone;
+            this.WhoisServer = whoisServer;
+            this.RawTextRecord = rawTextRecord;
+            this.CreatedDt = createdDt;
         }
         
         /// <summary>
@@ -203,7 +201,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -347,16 +345,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.CreatedDt.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

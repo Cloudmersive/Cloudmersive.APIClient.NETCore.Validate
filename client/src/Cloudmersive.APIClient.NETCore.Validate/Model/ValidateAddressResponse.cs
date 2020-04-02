@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,19 +26,19 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of validating a street address
     /// </summary>
     [DataContract]
-    public partial class ValidateAddressResponse :  IEquatable<ValidateAddressResponse>, IValidatableObject
+    public partial class ValidateAddressResponse :  IEquatable<ValidateAddressResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidateAddressResponse" /> class.
         /// </summary>
-        /// <param name="ValidAddress">True if the address is valid, false otherwise.</param>
-        /// <param name="Latitude">If the address is valid, the degrees latitude of the validated address, null otherwise.</param>
-        /// <param name="Longitude">If the address is valid, the degrees longitude of the validated address, null otherwise.</param>
-        public ValidateAddressResponse(bool? ValidAddress = default(bool?), double? Latitude = default(double?), double? Longitude = default(double?))
+        /// <param name="validAddress">True if the address is valid, false otherwise.</param>
+        /// <param name="latitude">If the address is valid, the degrees latitude of the validated address, null otherwise.</param>
+        /// <param name="longitude">If the address is valid, the degrees longitude of the validated address, null otherwise.</param>
+        public ValidateAddressResponse(bool? validAddress = default(bool?), double? latitude = default(double?), double? longitude = default(double?))
         {
-            this.ValidAddress = ValidAddress;
-            this.Latitude = Latitude;
-            this.Longitude = Longitude;
+            this.ValidAddress = validAddress;
+            this.Latitude = latitude;
+            this.Longitude = longitude;
         }
         
         /// <summary>
@@ -83,7 +81,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -143,16 +141,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.Longitude.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

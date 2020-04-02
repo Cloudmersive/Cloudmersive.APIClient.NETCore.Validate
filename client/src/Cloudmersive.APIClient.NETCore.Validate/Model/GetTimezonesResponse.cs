@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,25 +26,25 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of performing a get time zones operation
     /// </summary>
     [DataContract]
-    public partial class GetTimezonesResponse :  IEquatable<GetTimezonesResponse>, IValidatableObject
+    public partial class GetTimezonesResponse :  IEquatable<GetTimezonesResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTimezonesResponse" /> class.
         /// </summary>
-        /// <param name="Successful">True if successful, false otherwise.</param>
-        /// <param name="CountryFullName">Full name of the country.</param>
-        /// <param name="ISOTwoLetterCode">Two-letter ISO 3166-1 country code.</param>
-        /// <param name="FIPSTwoLetterCode">Two-letter FIPS 10-4 country code.</param>
-        /// <param name="ThreeLetterCode">Three-letter ISO 3166-1 country code.</param>
-        /// <param name="Timezones">Time zones (IANA/Olsen) in the country.</param>
-        public GetTimezonesResponse(bool? Successful = default(bool?), string CountryFullName = default(string), string ISOTwoLetterCode = default(string), string FIPSTwoLetterCode = default(string), string ThreeLetterCode = default(string), List<Timezone> Timezones = default(List<Timezone>))
+        /// <param name="successful">True if successful, false otherwise.</param>
+        /// <param name="countryFullName">Full name of the country.</param>
+        /// <param name="iSOTwoLetterCode">Two-letter ISO 3166-1 country code.</param>
+        /// <param name="fIPSTwoLetterCode">Two-letter FIPS 10-4 country code.</param>
+        /// <param name="threeLetterCode">Three-letter ISO 3166-1 country code.</param>
+        /// <param name="timezones">Time zones (IANA/Olsen) in the country.</param>
+        public GetTimezonesResponse(bool? successful = default(bool?), string countryFullName = default(string), string iSOTwoLetterCode = default(string), string fIPSTwoLetterCode = default(string), string threeLetterCode = default(string), List<Timezone> timezones = default(List<Timezone>))
         {
-            this.Successful = Successful;
-            this.CountryFullName = CountryFullName;
-            this.ISOTwoLetterCode = ISOTwoLetterCode;
-            this.FIPSTwoLetterCode = FIPSTwoLetterCode;
-            this.ThreeLetterCode = ThreeLetterCode;
-            this.Timezones = Timezones;
+            this.Successful = successful;
+            this.CountryFullName = countryFullName;
+            this.ISOTwoLetterCode = iSOTwoLetterCode;
+            this.FIPSTwoLetterCode = fIPSTwoLetterCode;
+            this.ThreeLetterCode = threeLetterCode;
+            this.Timezones = timezones;
         }
         
         /// <summary>
@@ -113,7 +111,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -194,16 +192,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.Timezones.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

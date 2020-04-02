@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,15 +26,15 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Request to validate a full name string
     /// </summary>
     [DataContract]
-    public partial class FullNameValidationRequest :  IEquatable<FullNameValidationRequest>, IValidatableObject
+    public partial class FullNameValidationRequest :  IEquatable<FullNameValidationRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FullNameValidationRequest" /> class.
         /// </summary>
-        /// <param name="FullNameString">Full name to process as a free-form string; supports many components such as First Name, Middle Name, Last Name, Title, Nickname, Suffix, and Display Name.</param>
-        public FullNameValidationRequest(string FullNameString = default(string))
+        /// <param name="fullNameString">Full name to process as a free-form string; supports many components such as First Name, Middle Name, Last Name, Title, Nickname, Suffix, and Display Name.</param>
+        public FullNameValidationRequest(string fullNameString = default(string))
         {
-            this.FullNameString = FullNameString;
+            this.FullNameString = fullNameString;
         }
         
         /// <summary>
@@ -63,7 +61,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -109,16 +107,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.FullNameString.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

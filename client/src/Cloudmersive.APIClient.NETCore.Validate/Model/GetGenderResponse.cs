@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,17 +26,17 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Result of the GetGender operation
     /// </summary>
     [DataContract]
-    public partial class GetGenderResponse :  IEquatable<GetGenderResponse>, IValidatableObject
+    public partial class GetGenderResponse :  IEquatable<GetGenderResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetGenderResponse" /> class.
         /// </summary>
-        /// <param name="Successful">True if successful, false otherwise.</param>
-        /// <param name="Gender">Gender for this name; possible values are Male, Female, and Neutral (can be applied to Male or Female).</param>
-        public GetGenderResponse(bool? Successful = default(bool?), string Gender = default(string))
+        /// <param name="successful">True if successful, false otherwise.</param>
+        /// <param name="gender">Gender for this name; possible values are Male, Female, and Neutral (can be applied to Male or Female).</param>
+        public GetGenderResponse(bool? successful = default(bool?), string gender = default(string))
         {
-            this.Successful = Successful;
-            this.Gender = Gender;
+            this.Successful = successful;
+            this.Gender = gender;
         }
         
         /// <summary>
@@ -73,7 +71,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -126,16 +124,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.Gender.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

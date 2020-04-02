@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,31 +26,31 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// Full email addresss validation result
     /// </summary>
     [DataContract]
-    public partial class FullEmailValidationResponse :  IEquatable<FullEmailValidationResponse>, IValidatableObject
+    public partial class FullEmailValidationResponse :  IEquatable<FullEmailValidationResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FullEmailValidationResponse" /> class.
         /// </summary>
-        /// <param name="ValidAddress">True if the email address is valid overall, false otherwise.</param>
-        /// <param name="MailServerUsedForValidation">Email server connected to for verification.</param>
-        /// <param name="ValidSyntax">True if the syntax of the email address is valid, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
-        /// <param name="ValidDomain">True if the domain name of the email address is valid, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
-        /// <param name="ValidSMTP">True if the email address was verified by the remote server, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
-        /// <param name="IsCatchallDomain">True if the domain is a catch-all domain name, false otherwise.  Catch-all domain names, while rare, always accept inbound email to ensure they do not lose any potentially useful emails.  Catch-all domain names can occassionally be configured to first accept and store all inbound email, but then later send a bounce email back to the sender after a delayed period of time..</param>
-        /// <param name="Domain">Domain name of the email address.</param>
-        /// <param name="IsFreeEmailProvider">True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise..</param>
-        /// <param name="IsDisposable">True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there..</param>
-        public FullEmailValidationResponse(bool? ValidAddress = default(bool?), string MailServerUsedForValidation = default(string), bool? ValidSyntax = default(bool?), bool? ValidDomain = default(bool?), bool? ValidSMTP = default(bool?), bool? IsCatchallDomain = default(bool?), string Domain = default(string), bool? IsFreeEmailProvider = default(bool?), bool? IsDisposable = default(bool?))
+        /// <param name="validAddress">True if the email address is valid overall, false otherwise.</param>
+        /// <param name="mailServerUsedForValidation">Email server connected to for verification.</param>
+        /// <param name="validSyntax">True if the syntax of the email address is valid, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
+        /// <param name="validDomain">True if the domain name of the email address is valid, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
+        /// <param name="validSMTP">True if the email address was verified by the remote server, false otherwise.  This is one component of ValidAddress, but not the only one..</param>
+        /// <param name="isCatchallDomain">True if the domain is a catch-all domain name, false otherwise.  Catch-all domain names, while rare, always accept inbound email to ensure they do not lose any potentially useful emails.  Catch-all domain names can occassionally be configured to first accept and store all inbound email, but then later send a bounce email back to the sender after a delayed period of time..</param>
+        /// <param name="domain">Domain name of the email address.</param>
+        /// <param name="isFreeEmailProvider">True if the email domain name is a free provider (typically a free to sign up web email provider for consumers / personal use), false otherwise..</param>
+        /// <param name="isDisposable">True if the email address is a disposable email address, false otherwise; these disposable providers are not typically used to receive email and so will have a low likelihood of opening mail sent there..</param>
+        public FullEmailValidationResponse(bool? validAddress = default(bool?), string mailServerUsedForValidation = default(string), bool? validSyntax = default(bool?), bool? validDomain = default(bool?), bool? validSMTP = default(bool?), bool? isCatchallDomain = default(bool?), string domain = default(string), bool? isFreeEmailProvider = default(bool?), bool? isDisposable = default(bool?))
         {
-            this.ValidAddress = ValidAddress;
-            this.MailServerUsedForValidation = MailServerUsedForValidation;
-            this.ValidSyntax = ValidSyntax;
-            this.ValidDomain = ValidDomain;
-            this.ValidSMTP = ValidSMTP;
-            this.IsCatchallDomain = IsCatchallDomain;
-            this.Domain = Domain;
-            this.IsFreeEmailProvider = IsFreeEmailProvider;
-            this.IsDisposable = IsDisposable;
+            this.ValidAddress = validAddress;
+            this.MailServerUsedForValidation = mailServerUsedForValidation;
+            this.ValidSyntax = validSyntax;
+            this.ValidDomain = validDomain;
+            this.ValidSMTP = validSMTP;
+            this.IsCatchallDomain = isCatchallDomain;
+            this.Domain = domain;
+            this.IsFreeEmailProvider = isFreeEmailProvider;
+            this.IsDisposable = isDisposable;
         }
         
         /// <summary>
@@ -143,7 +141,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -245,16 +243,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.IsDisposable.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

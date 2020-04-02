@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.Validate.Client.SwaggerDateConverter;
 
 namespace Cloudmersive.APIClient.NETCore.Validate.Model
@@ -28,37 +26,37 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
     /// VatLookupResponse
     /// </summary>
     [DataContract]
-    public partial class VatLookupResponse :  IEquatable<VatLookupResponse>, IValidatableObject
+    public partial class VatLookupResponse :  IEquatable<VatLookupResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VatLookupResponse" /> class.
         /// </summary>
-        /// <param name="CountryCode">Two-letter country code.</param>
-        /// <param name="VatNumber">VAT number.</param>
-        /// <param name="IsValid">True if the VAT code is valid, false otherwise.</param>
-        /// <param name="BusinessName">Name of the business.</param>
-        /// <param name="BusinessAddress">Business address as a single string.</param>
-        /// <param name="BusinessBuilding">For the business address, the name of the building, house or structure if applicable, such as \&quot;Cloudmersive Building 2\&quot;.  This will often by null..</param>
-        /// <param name="BusinessStreetNumber">For the business address, the street number or house number of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;1600\&quot;.  This value will typically be populated for most addresses..</param>
-        /// <param name="BusinessStreet">For the business address, the name of the street or road of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;Pennsylvania Avenue NW\&quot;..</param>
-        /// <param name="BusinessCity">For the business address, the city of the address..</param>
-        /// <param name="BusinessStateOrProvince">For the business address, the state or province of the address..</param>
-        /// <param name="BusinessPostalCode">For the business address, the postal code or zip code of the address..</param>
-        /// <param name="BusinessCountry">For the business address, country of the address, if present in the address.  If not included in the address it will be null..</param>
-        public VatLookupResponse(string CountryCode = default(string), string VatNumber = default(string), bool? IsValid = default(bool?), string BusinessName = default(string), string BusinessAddress = default(string), string BusinessBuilding = default(string), string BusinessStreetNumber = default(string), string BusinessStreet = default(string), string BusinessCity = default(string), string BusinessStateOrProvince = default(string), string BusinessPostalCode = default(string), string BusinessCountry = default(string))
+        /// <param name="countryCode">Two-letter country code.</param>
+        /// <param name="vatNumber">VAT number.</param>
+        /// <param name="isValid">True if the VAT code is valid, false otherwise.</param>
+        /// <param name="businessName">Name of the business.</param>
+        /// <param name="businessAddress">Business address as a single string.</param>
+        /// <param name="businessBuilding">For the business address, the name of the building, house or structure if applicable, such as \&quot;Cloudmersive Building 2\&quot;.  This will often by null..</param>
+        /// <param name="businessStreetNumber">For the business address, the street number or house number of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;1600\&quot;.  This value will typically be populated for most addresses..</param>
+        /// <param name="businessStreet">For the business address, the name of the street or road of the address.  For example, in the address \&quot;1600 Pennsylvania Avenue NW\&quot; the street number would be \&quot;Pennsylvania Avenue NW\&quot;..</param>
+        /// <param name="businessCity">For the business address, the city of the address..</param>
+        /// <param name="businessStateOrProvince">For the business address, the state or province of the address..</param>
+        /// <param name="businessPostalCode">For the business address, the postal code or zip code of the address..</param>
+        /// <param name="businessCountry">For the business address, country of the address, if present in the address.  If not included in the address it will be null..</param>
+        public VatLookupResponse(string countryCode = default(string), string vatNumber = default(string), bool? isValid = default(bool?), string businessName = default(string), string businessAddress = default(string), string businessBuilding = default(string), string businessStreetNumber = default(string), string businessStreet = default(string), string businessCity = default(string), string businessStateOrProvince = default(string), string businessPostalCode = default(string), string businessCountry = default(string))
         {
-            this.CountryCode = CountryCode;
-            this.VatNumber = VatNumber;
-            this.IsValid = IsValid;
-            this.BusinessName = BusinessName;
-            this.BusinessAddress = BusinessAddress;
-            this.BusinessBuilding = BusinessBuilding;
-            this.BusinessStreetNumber = BusinessStreetNumber;
-            this.BusinessStreet = BusinessStreet;
-            this.BusinessCity = BusinessCity;
-            this.BusinessStateOrProvince = BusinessStateOrProvince;
-            this.BusinessPostalCode = BusinessPostalCode;
-            this.BusinessCountry = BusinessCountry;
+            this.CountryCode = countryCode;
+            this.VatNumber = vatNumber;
+            this.IsValid = isValid;
+            this.BusinessName = businessName;
+            this.BusinessAddress = businessAddress;
+            this.BusinessBuilding = businessBuilding;
+            this.BusinessStreetNumber = businessStreetNumber;
+            this.BusinessStreet = businessStreet;
+            this.BusinessCity = businessCity;
+            this.BusinessStateOrProvince = businessStateOrProvince;
+            this.BusinessPostalCode = businessPostalCode;
+            this.BusinessCountry = businessCountry;
         }
         
         /// <summary>
@@ -173,7 +171,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -296,16 +294,6 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.BusinessCountry.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 
