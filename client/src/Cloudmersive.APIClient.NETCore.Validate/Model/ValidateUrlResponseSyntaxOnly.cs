@@ -33,10 +33,12 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         /// </summary>
         /// <param name="validURL">True if the URL is valid, false otherwise.</param>
         /// <param name="wellFormedURL">Well-formed version of the URL.</param>
-        public ValidateUrlResponseSyntaxOnly(bool? validURL = default(bool?), string wellFormedURL = default(string))
+        /// <param name="topLevelDomainName">The top-level domain name of the URL, e.g. mydomain.com.</param>
+        public ValidateUrlResponseSyntaxOnly(bool? validURL = default(bool?), string wellFormedURL = default(string), string topLevelDomainName = default(string))
         {
             this.ValidURL = validURL;
             this.WellFormedURL = wellFormedURL;
+            this.TopLevelDomainName = topLevelDomainName;
         }
         
         /// <summary>
@@ -54,6 +56,13 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
         public string WellFormedURL { get; set; }
 
         /// <summary>
+        /// The top-level domain name of the URL, e.g. mydomain.com
+        /// </summary>
+        /// <value>The top-level domain name of the URL, e.g. mydomain.com</value>
+        [DataMember(Name="TopLevelDomainName", EmitDefaultValue=false)]
+        public string TopLevelDomainName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -63,6 +72,7 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
             sb.Append("class ValidateUrlResponseSyntaxOnly {\n");
             sb.Append("  ValidURL: ").Append(ValidURL).Append("\n");
             sb.Append("  WellFormedURL: ").Append(WellFormedURL).Append("\n");
+            sb.Append("  TopLevelDomainName: ").Append(TopLevelDomainName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,6 +116,11 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     this.WellFormedURL == input.WellFormedURL ||
                     (this.WellFormedURL != null &&
                     this.WellFormedURL.Equals(input.WellFormedURL))
+                ) && 
+                (
+                    this.TopLevelDomainName == input.TopLevelDomainName ||
+                    (this.TopLevelDomainName != null &&
+                    this.TopLevelDomainName.Equals(input.TopLevelDomainName))
                 );
         }
 
@@ -122,6 +137,8 @@ namespace Cloudmersive.APIClient.NETCore.Validate.Model
                     hashCode = hashCode * 59 + this.ValidURL.GetHashCode();
                 if (this.WellFormedURL != null)
                     hashCode = hashCode * 59 + this.WellFormedURL.GetHashCode();
+                if (this.TopLevelDomainName != null)
+                    hashCode = hashCode * 59 + this.TopLevelDomainName.GetHashCode();
                 return hashCode;
             }
         }
